@@ -4,6 +4,11 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
+const scaledCanvas = {
+    width: canvas.width / 4,
+    height: canvas.height / 4
+}
+
 const gravity = 0.5
 
 class Sprite {
@@ -85,10 +90,16 @@ function animate(){
      
     c.save()
     c.scale(4, 4)
+    //scales the background
+    c.translate(0, -background.image.height + scaledCanvas.height)
     background.update()
+    //updatess the background
     c.restore()
+    //scales the background
     player.update()
+    //updates the player
     player2.update()
+    //updates player 2 
 
     player.velocity.x = 0
     if(keys.d.pressed) player.velocity.x = 5
