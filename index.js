@@ -71,13 +71,22 @@ const keys = {
 }
 
 const background = new Sprite({
-    
+    position: {
+        x: 0,
+        y: 0,
+    },
+    imageSrc: './img/background.png',
 })
 
 function animate(){
     window.requestAnimationFrame(animate)
     c.fillStyle = 'white'
     c.fillRect(0, 0, canvas.width, canvas.height)
+     
+    c.save()
+    c.scale(4, 4)
+    background.update()
+    c.restore()
     player.update()
     player2.update()
 
