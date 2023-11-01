@@ -201,4 +201,9 @@ class Player extends Sprite {
       }
     }
   
+    applyGravity() {
+      this.velocity.y += gravity
+      this.position.y += this.velocity.y
+    }
+  
    
