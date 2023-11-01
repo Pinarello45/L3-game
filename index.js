@@ -13,23 +13,23 @@ class Player {
     }
     draw() {
         c.fillStyle = 'red'
-        c.fillRect(200, this.position.y, 100, 100)         
+        c.fillRect(this.position.x, this.position.y, 100, 100)         
     }
+    update() {
+        this.draw()
+       this.position.y++
+    }
+
 }
 
-let y = 100
-let y2 = 100
+
+const player = new Player()
+
 function animate(){
     window.requestAnimationFrame(animate)
     c.fillStyle = 'white'
     c.fillRect(0, 0, canvas.width, canvas.height)
-
-   
-    y++
-
-    c.fillStyle = 'red'
-    c.fillRect(400, y2, 100, 100)
-    y2++
+    player.update()
 }
 
 animate()
