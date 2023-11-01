@@ -6,6 +6,18 @@ canvas.height = 576
 
 const gravity = 0.5
 
+class Sprite {
+    constructor(position){
+        this.position = position
+    }
+
+    draw() {
+      c.drawImage(this.image)
+
+    }
+}
+
+
 class Player {
     constructor(position){
         this.position = position
@@ -59,7 +71,8 @@ function animate(){
     player2.update()
 
     player.velocity.x = 0
-    if(keys.d.pressed) player.velocity.x = 1
+    if(keys.d.pressed) player.velocity.x = 5
+    else if (keys.a.pressed) player.velocity.x = -5
 }
 
 animate()
