@@ -9,3 +9,7 @@ c.fillRect(0, 0, canvas.width, canvas.height)
 
 c.fillStyle = 'red'
 c.fillRect(200, 100, 100, 100)
+
+function animate(){
+    window.requestAnimationFrame(animate)
+}
