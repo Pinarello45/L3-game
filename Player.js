@@ -1,5 +1,5 @@
-class Player extends Sprite {
-    constructor({
+class Player extends Sprite {//start of class
+    constructor({ //start of constructor
       position,
       collisionBlocks,
       platformCollisionBlocks,
@@ -7,7 +7,8 @@ class Player extends Sprite {
       frameRate,
       scale = 0.5,
       animations,
-    }) {
+    })//end of constructor 
+    {//start of func
       super({ imageSrc, frameRate, scale })
       this.position = position
       this.velocity = {
@@ -44,18 +45,18 @@ class Player extends Sprite {
         width: 200,
         height: 80,
       }
-    }
+    } //end of func
   
-    switchSprite(key) {
+    switchSprite(key) { //start of switch sprite
       if (this.image === this.animations[key].image || !this.loaded) return
   
       this.currentFrame = 0
       this.image = this.animations[key].image
       this.frameBuffer = this.animations[key].frameBuffer
       this.frameRate = this.animations[key].frameRate
-    }
+    }//end of switch sprite
   
-    updateCamerabox() {
+    updateCamerabox() { //start of update camera box
       this.camerabox = {
         position: {
           x: this.position.x - 50,
@@ -64,18 +65,18 @@ class Player extends Sprite {
         width: 200,
         height: 80,
       }
-    }
+    } //end of camera box
   
-    checkForHorizontalCanvasCollision() {
+    checkForHorizontalCanvasCollision() { //start of checkfor horizontal canvas collision
       if (
         this.hitbox.position.x + this.hitbox.width + this.velocity.x >= 576 ||
         this.hitbox.position.x + this.velocity.x <= 0
       ) {
         this.velocity.x = 0
       }
-    }
+    } //end of check for horizontal canvas collection
   
-    shouldPanCameraToTheLeft({ canvas, camera }) {
+    shouldPanCameraToTheLeft({ canvas, camera }) { //this pans the camera to the left when playing
       const cameraboxRightSide = this.camerabox.position.x + this.camerabox.width
       const scaledDownCanvasWidth = canvas.width / 4
   
@@ -87,25 +88,25 @@ class Player extends Sprite {
       ) {
         camera.position.x -= this.velocity.x
       }
-    }
+    }//end of panning camera
   
-    shouldPanCameraToTheRight({ canvas, camera }) {
+    shouldPanCameraToTheRight({ canvas, camera }) { //this pans the camera to the right when playing
       if (this.camerabox.position.x <= 0) return
   
       if (this.camerabox.position.x <= Math.abs(camera.position.x)) {
         camera.position.x -= this.velocity.x
       }
-    }
+    }//end of panning camera
   
-    shouldPanCameraDown({ canvas, camera }) {
+    shouldPanCameraDown({ canvas, camera }) { //this pans the camera down
       if (this.camerabox.position.y + this.velocity.y <= 0) return
   
       if (this.camerabox.position.y <= Math.abs(camera.position.y)) {
         camera.position.y -= this.velocity.y
       }
-    }
+    } //end of panning camera down
   
-    shouldPanCameraUp({ canvas, camera }) {
+    shouldPanCameraUp({ canvas, camera }) { //this pans the camera up
       if (
         this.camerabox.position.y + this.camerabox.height + this.velocity.y >=
         432
@@ -120,7 +121,7 @@ class Player extends Sprite {
       ) {
         camera.position.y -= this.velocity.y
       }
-    }
+    } //end of panning camera
   
     update() {
       this.updateFrames()
@@ -157,7 +158,7 @@ class Player extends Sprite {
       this.checkForVerticalCollisions()
     }
   
-    updateHitbox() {
+    updateHitbox() { //this updates the hit box
       this.hitbox = {
         position: {
           x: this.position.x + 35,
@@ -166,9 +167,9 @@ class Player extends Sprite {
         width: 14,
         height: 27,
       }
-    }
+    } //end of updating hit box
   
-    checkForHorizontalCollisions() {
+    checkForHorizontalCollisions() { //checks for the horizontal collisions 
       for (let i = 0; i < this.collisionBlocks.length; i++) {
         const collisionBlock = this.collisionBlocks[i]
   
@@ -199,14 +200,14 @@ class Player extends Sprite {
           }
         }
       }
-    }
+    } //end of check for horizontal collisions
   
-    applyGravity() {
+    applyGravity() { //this applys gravity
       this.velocity.y += gravity
       this.position.y += this.velocity.y
-    }
+    }//end of applying gravity
   
-    checkForVerticalCollisions() {
+    checkForVerticalCollisions() { //checks for vertical collisions 
       for (let i = 0; i < this.collisionBlocks.length; i++) {
         const collisionBlock = this.collisionBlocks[i]
   
@@ -259,5 +260,5 @@ class Player extends Sprite {
           }
         }
       }
-    }
-  }
+    }//end of vertical collisions
+  }//end of class
